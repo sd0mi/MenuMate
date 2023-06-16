@@ -41,3 +41,18 @@ expressApp.get('/online', function (req, res, next) {
     console.log("I am Online!")
     res.sendStatus(200)
 })
+
+expressApp.get('/newOrder', function (req, res, next) {
+    const object = {
+        time: Date.now(),
+        products: [],
+        table: 5
+    }
+    
+    mainDatabase.insert(object, function (err, newDoc) {
+        console.log(newDoc._id)
+    });
+
+    console.log("I am Online!")
+    res.sendStatus(200)
+})
